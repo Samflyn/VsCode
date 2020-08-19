@@ -1,0 +1,7 @@
+// watchmode - autorecompile
+tsc app.ts --watch
+
+// for an entire project
+tsc --init // once
+tsc // to compile
+tsc -w
