@@ -5,3 +5,13 @@ tsc app.ts --watch
 tsc --init // once
 tsc // to compile
 tsc -w
+
+ts-loader to use webpack with typescript
+
+use translation files for third party js packages
+npm install --save-dev @types/lodash
+
+// third party
+
+class-transformer plainToClass
+class-validator

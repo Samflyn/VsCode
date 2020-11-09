@@ -61,3 +61,6 @@ if (typeof userInput === 'string') {
 function errors(code: number): never {
   throw { errorCode: code };
 }
+
+// declaring that it will exist
+declare var GLOBAL: any;
