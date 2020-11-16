@@ -2,10 +2,10 @@
 
 const mongoose = require('mongoose');
 
-exports.mongooseConnect = mongoose.connect(
-  'mongodb+srv://sam:samflynn@mongodb.fng8u.mongodb.net/mongodb?retryWrites=true&w=majority',
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
+exports.mongooseConnect = mongoose.connect('mongo', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const bcrypt = require('bcryptjs');
 
