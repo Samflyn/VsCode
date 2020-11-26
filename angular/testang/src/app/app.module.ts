@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
@@ -38,6 +39,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ElementsComponent } from './server/elements/elements.component';
 import { InsideElementsComponent } from './server/elements/inside-elements/inside-elements.component';
+import { NgRxEffects } from './ng-rx/ng-rx.effects';
+import { MaterialModule } from './material.module';
+import { MaterialComponent } from './material/material.component';
+import { MaterialSignupComponent } from './material/material-signup/material-signup.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +75,8 @@ import { InsideElementsComponent } from './server/elements/inside-elements/insid
     AnimationsComponent,
     ElementsComponent,
     InsideElementsComponent,
+    MaterialComponent,
+    MaterialSignupComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -83,12 +90,16 @@ import { InsideElementsComponent } from './server/elements/inside-elements/insid
     // but all the other imports should be imported if we need to use it in other modules i.e feature module
     // StoreModule.forRoot({ NumbersList: numberListReducer }),
     StoreModule.forRoot(fromAppReducer.appReducer),
+    EffectsModule.forRoot([NgRxEffects]),
     // to define ngrx which reducers are used i.e ActionReducerMap
     // define identifier to reducer
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }), // for service worker, ngsw-worker will be auto generated when built for production
+    // Angular Materail
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [
     // instead of using providers we can provide these in different module i.e core module and import that module or just use providedIn

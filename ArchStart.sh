@@ -23,8 +23,6 @@ if [[ "${UID}" -eq 0 ]]; then
     pacman -S base base-devel xorg xorg-xinit tlp intel-ucode linux-firmware acpi_call-dkms --noconfirm
     systemctl enable tlp
     pacman -Sc --noconfirm
-    git config --global user.name 'Samflyn'
-    git config --global user.email 'akhil.sai701@gmail.com'
     echo 'done...'
     exit 0
 else

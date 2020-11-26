@@ -19,6 +19,8 @@ import { NgRxComponent } from './ng-rx/ng-rx.component';
 import { AnimationsComponent } from './server/animations/animations.component';
 import { AppComponent } from './app.component';
 import { ElementsComponent } from './server/elements/elements.component';
+import { MaterialComponent } from './material/material.component';
+import { MaterialSignupComponent } from './material/material-signup/material-signup.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent, pathMatch: 'full' },
@@ -55,6 +57,12 @@ const appRoutes: Routes = [
     ],
   },
   { path: 'ngrx', component: NgRxComponent },
+  {
+    path: 'material',
+    component: MaterialComponent,
+    children: [{ path: 'signup', component: MaterialSignupComponent }],
+  },
+
   { path: '**', redirectTo: 'server/error' },
   // Lazy Loading
   // modules which are lazyLoaded should be removed from app module declarations

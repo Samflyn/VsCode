@@ -37,7 +37,9 @@ export class NgRxComponent implements OnInit, OnDestroy {
   // dispatching action
   addToList(element: HTMLInputElement): void {
     if (element.value !== '') {
-      this.store.dispatch(new NgRxActions.AddNumber(element.value));
+      // this.store.dispatch(new NgRxActions.AddNumber(element.value));
+      // for using effects
+      this.store.dispatch(new NgRxActions.AddNumberStart(element.value));
       element.value = null;
     }
   }
