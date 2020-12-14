@@ -250,3 +250,7 @@ readonly VARIABLE="true"
 # to add to systemd logs
 
 logger "Some user defines logs!!!"
+
+########## getopts ##########
+## for parsing command line parameters
+

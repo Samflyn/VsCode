@@ -20,9 +20,8 @@ if [[ "${UID}" -eq 0 ]]; then
     echo 'WIRELESS_REGDOM="IN"' >/etc/conf.d/wireless-regdom
     iw reg set IN
     iwconfig wlp6s0 power off
-    pacman -S base base-devel xorg xorg-xinit tlp intel-ucode linux-firmware acpi_call-dkms --noconfirm
+    pacman -S base base-devel xorg xorg-xinit tlp intel-ucode linux-firmware acpi_call-dkms archlinux-keyring --noconfirm
     systemctl enable tlp
-    pacman -Sc --noconfirm
     echo 'done...'
     exit 0
 else
