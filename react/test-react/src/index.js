@@ -4,9 +4,10 @@ import './index.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
-import { createStore } from 'redux';
-import reducer from './store/reducer';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import reducer from './store/reducers/reducer';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 // to set defaults to all requests being sent
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
@@ -35,15 +36,37 @@ axios.interceptors.response.use(
   }
 );
 
-const store = createStore(reducer);
+// REDUX
+
+// if using multiple reducers import them and add to the object with any name
+// the state will be merged but it will be nested
+const rootReducer = combineReducers({ reduce: reducer });
+
+// for creating middleware in redux
+const logger = (store) => {
+  return (next) => {
+    return (action) => {
+      console.log('[Middleware] ', action);
+      return next(action);
+    };
+  };
+};
+
+// middleware is applied to store
+// enhancer is the so called middleware
+// we can pass list of enhancers which will be executed in order
+const store = createStore(rootReducer, applyMiddleware(logger, thunk));
+
+// for one reducer
+// const store = createStore(reducer);
 
 ReactDOM.render(
-  <React.StrictMode>
-    {/* A helper component that injects redux store into react components */}
-    <Provider store={store}>
+  //  A helper component that injects redux store into react components
+  <Provider store={store}>
+    <React.StrictMode>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

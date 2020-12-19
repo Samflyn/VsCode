@@ -16,6 +16,7 @@ import HttpRequestComponent from '../components/HttpComponent/HttpRequestCompone
 import RoutingComponent from '../components/RoutingComponent/RoutingComponent';
 import FormsComponent from '../components/FormsComponent/FormsComponent';
 import ReduxComponent from './ReduxComponent/ReduxComponent';
+import Auth from './auth/auth';
 
 // react will run this function everytime it need to re-render the component
 // in a class based component it will run render()
@@ -210,6 +211,8 @@ function App() {
         <FormsComponent></FormsComponent>
         <hr />
         <ReduxComponent></ReduxComponent>
+        <hr />
+        <Auth></Auth>
       </div>
     </BrowserRouter>
     // </StyleRoot>

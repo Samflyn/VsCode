@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 
-import Input from './input/input';
+import Input from '../../components/FormsComponent/input/input';
 
-class FormsComponent extends Component {
+class Auth extends Component {
   state = {
     formFields: {
-      name: {
-        elementType: 'input',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Name',
-        },
-        value: '',
-        validation: {
-          required: true,
-        },
-        valid: false,
-      },
       email: {
         elementType: 'input',
         elementConfig: {
@@ -36,32 +24,6 @@ class FormsComponent extends Component {
           placeholder: 'Password',
         },
         value: '',
-        validation: {
-          required: true,
-        },
-        valid: false,
-      },
-      dob: {
-        elementType: 'input',
-        elementConfig: {
-          type: 'date',
-          placeholder: 'Date',
-        },
-        value: '',
-        validation: {
-          required: true,
-        },
-        valid: false,
-      },
-      gender: {
-        elementType: 'select',
-        elementConfig: {
-          options: [
-            { value: 'male', displayValue: 'Male' },
-            { value: 'female', displayValue: 'Female' },
-          ],
-        },
-        value: 'male',
         validation: {
           required: true,
         },
@@ -107,18 +69,13 @@ class FormsComponent extends Component {
     const formData = { ...this.state.formFields };
     for (const key in formData) {
       if (formData.hasOwnProperty(key)) {
-        if (key === 'gender') {
-          formData[key].value = 'male';
-        } else {
-          formData[key].value = '';
-        }
+        formData[key].value = '';
       }
     }
     this.setState({ formFields: formData });
   };
 
   render() {
-    // For dynamically creating form based on the object in state
     const formElements = [];
     for (const key in this.state.formFields) {
       if (this.state.formFields.hasOwnProperty(key)) {
@@ -151,27 +108,11 @@ class FormsComponent extends Component {
 
     return (
       <div>
-        <h1>Forms</h1>
+        <h1>Authentication</h1>
         {formOut}
       </div>
     );
-    // <form>
-    //   <Input inputtype="input" type="text" name="name" placeholder="Name" />
-    //   <Input
-    //     inputtype="input"
-    //     type="email"
-    //     name="email"
-    //     placeholder="Email"
-    //   />
-    //   <Input
-    //     inputtype="input"
-    //     type="password"
-    //     name="password"
-    //     placeholder="Password"
-    //   />
-    //   <Input inputtype="input" type="date" name="dob" placeholder="Date" />
-    // </form>
   }
 }
 
-export default FormsComponent;
+export default Auth;
