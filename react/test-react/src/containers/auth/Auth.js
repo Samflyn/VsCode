@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Input from '../../components/FormsComponent/input/input';
+import * as authActions from '../../store/actions/authAction';
 
 class Auth extends Component {
   state = {
@@ -30,6 +32,7 @@ class Auth extends Component {
         valid: false,
       },
     },
+    isSignUp: true,
   };
 
   checkValidity(value, rules) {
@@ -58,11 +61,11 @@ class Auth extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    const formData = {};
-    for (const key in this.state.formFields) {
-      formData[key] = this.state.formFields[key].value;
-    }
-    console.log(formData);
+    this.props.onAuth(
+      this.state.formFields.email.value,
+      this.state.formFields.password.value,
+      this.state.isSignUp
+    );
   };
 
   clearHandler = () => {
@@ -73,6 +76,16 @@ class Auth extends Component {
       }
     }
     this.setState({ formFields: formData });
+  };
+
+  switchMode = () => {
+    this.setState((prevState) => {
+      return { isSignUp: !prevState.isSignUp };
+    });
+  };
+
+  logout = () => {
+    this.props.onLogout();
   };
 
   render() {
@@ -88,6 +101,11 @@ class Auth extends Component {
 
     let formOut = (
       <form onSubmit={this.submitHandler}>
+        {this.props.token ? (
+          <p style={{ color: 'green', fontWeight: 'bold' }}>Logged In</p>
+        ) : (
+          <p style={{ color: 'red', fontWeight: 'bold' }}>Logged Out</p>
+        )}
         {formElements.map((formEl) => {
           return (
             <Input
@@ -99,9 +117,23 @@ class Auth extends Component {
             />
           );
         })}
-        <button type="submit">Submit</button>
+        {this.props.error ? (
+          <p style={{ color: 'red', fontWeight: 'bold' }}>
+            {this.props.error.message}
+          </p>
+        ) : null}
+        <br />
+        <button type="submit">
+          {!this.state.isSignUp ? 'Sign In' : 'Sign Up'}
+        </button>
+        <button type="button" onClick={this.switchMode}>
+          Switch to {this.state.isSignUp ? 'Sign In' : 'Sign Up'}
+        </button>
         <button type="reset" onClick={this.clearHandler}>
           Clear
+        </button>
+        <button type="button" onClick={this.logout}>
+          Logout
         </button>
       </form>
     );
@@ -115,4 +147,19 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token,
+    error: state.auth.error,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password, isSignUp) =>
+      dispatch(authActions.auth(email, password, isSignUp)),
+    onLogout: () => dispatch(authActions.logout()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

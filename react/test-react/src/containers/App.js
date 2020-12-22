@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 // import Radium, { StyleRoot } from 'radium';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // if css modules are enabled, css classes can be imported to an object and used as cssClasses.Button
 // import cssClasses from './App.css';
@@ -16,7 +17,7 @@ import HttpRequestComponent from '../components/HttpComponent/HttpRequestCompone
 import RoutingComponent from '../components/RoutingComponent/RoutingComponent';
 import FormsComponent from '../components/FormsComponent/FormsComponent';
 import ReduxComponent from './ReduxComponent/ReduxComponent';
-import Auth from './auth/auth';
+import Auth from './auth/Auth';
 
 // react will run this function everytime it need to re-render the component
 // in a class based component it will run render()
@@ -232,4 +233,6 @@ function App() {
 // wrapping app with radium is enough for hover but for media queries and animations use StyleRoot
 // export default Radium(App);
 
-export default App;
+// using react router with connect will break the router
+// use the withRouter hoc to pass the props down to the components
+export default withRouter(connect(null, null)(App));

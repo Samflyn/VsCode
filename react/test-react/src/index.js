@@ -8,6 +8,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import reducer from './store/reducers/reducer';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import authReducer from './store/reducers/authReducer';
 
 // to set defaults to all requests being sent
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
@@ -20,7 +21,7 @@ axios.interceptors.request.use(
     return axiosRequestConfig;
   },
   (error) => {
-    console.log(error);
+    // console.log(error);
     return Promise.reject(error);
   }
 );
@@ -31,7 +32,7 @@ axios.interceptors.response.use(
     return axiosResponse;
   },
   (error) => {
-    console.log(error);
+    // console.log(error);
     return Promise.reject(error);
   }
 );
@@ -40,7 +41,7 @@ axios.interceptors.response.use(
 
 // if using multiple reducers import them and add to the object with any name
 // the state will be merged but it will be nested
-const rootReducer = combineReducers({ reduce: reducer });
+const rootReducer = combineReducers({ reduce: reducer, auth: authReducer });
 
 // for creating middleware in redux
 const logger = (store) => {
