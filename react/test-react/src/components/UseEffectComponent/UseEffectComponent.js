@@ -39,7 +39,7 @@ const useEffectComponent = (props) => {
   );
 };
 
-// will render only if the input changes
+// will re-renders only if the input changes
 // shouldComponentUpdate for functional component
-// it memorizes the props used and renders if props used in this component change
+// it memorizes the props used and re-renders if props used in this component change
 export default React.memo(useEffectComponent);

@@ -1,8 +1,16 @@
 import React, { Component, Suspense } from 'react';
-import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
+import {
+  Route,
+  Link,
+  NavLink,
+  Switch,
+  Redirect,
+  withRouter,
+} from 'react-router-dom';
 import Page1 from './Page1/Page1';
 import Page2 from './Page2/Page2';
 import asyncComponent from '../../hoc/asyncComponent';
+import { connect } from 'react-redux';
 
 // The route package adds extra info to props
 // these props are only added to the component that is rendered by the route
@@ -109,4 +117,7 @@ class RoutingComponent extends Component {
   }
 }
 
-export default RoutingComponent;
+// https://stackoverflow.com/questions/49384270
+export default withRouter(connect(null, null)(RoutingComponent));
+
+// export default RoutingComponent;

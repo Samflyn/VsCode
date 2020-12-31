@@ -9,6 +9,9 @@ import reducer from './store/reducers/reducer';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import authReducer from './store/reducers/authReducer';
+import createSagaMiddleware from 'redux-saga';
+
+import { watchAuth } from './store/sagas/';
 
 // to set defaults to all requests being sent
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
@@ -53,10 +56,21 @@ const logger = (store) => {
   };
 };
 
+// to create a saga middleware
+const sagaMiddleware = createSagaMiddleware();
+
 // middleware is applied to store
 // enhancer is the so called middleware
 // we can pass list of enhancers which will be executed in order
-const store = createStore(rootReducer, applyMiddleware(logger, thunk));
+const store = createStore(
+  rootReducer,
+  applyMiddleware(logger, thunk, sagaMiddleware)
+);
+
+// to run the saga function generator
+// sagaMiddleware.run(logoutSaga);
+
+sagaMiddleware.run(watchAuth);
 
 // for one reducer
 // const store = createStore(reducer);

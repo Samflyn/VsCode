@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 // import Radium, { StyleRoot } from 'radium';
-import { BrowserRouter, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
 // if css modules are enabled, css classes can be imported to an object and used as cssClasses.Button
 // import cssClasses from './App.css';
@@ -18,6 +18,7 @@ import RoutingComponent from '../components/RoutingComponent/RoutingComponent';
 import FormsComponent from '../components/FormsComponent/FormsComponent';
 import ReduxComponent from './ReduxComponent/ReduxComponent';
 import Auth from './auth/Auth';
+import AllHooks from '../hooks/all';
 
 // react will run this function everytime it need to re-render the component
 // in a class based component it will run render()
@@ -214,6 +215,8 @@ function App() {
         <ReduxComponent></ReduxComponent>
         <hr />
         <Auth></Auth>
+        <hr />
+        <AllHooks></AllHooks>
       </div>
     </BrowserRouter>
     // </StyleRoot>
@@ -235,4 +238,7 @@ function App() {
 
 // using react router with connect will break the router
 // use the withRouter hoc to pass the props down to the components
-export default withRouter(connect(null, null)(App));
+// withRouter can only be used inside the router i.e BrowserRouter
+// export default withRouter(connect(null, null)(App));
+
+export default App;

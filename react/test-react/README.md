@@ -106,3 +106,68 @@ We don't need to install react-router on our own for it to work. You can omit th
 ### Redux Thunk
 
 Since we cannot use async functions for editing store we use a third party package as middleware
+
+### Testing
+
+For testing we need jest, enzyme react-test-renderer enzyme-adapter-react-17
+
+### Webpack
+
+A bundler which also optimizes files and also transpile js to older versions.
+
+It combines multiple js or css into bundled files.
+
+To install babel -> npm install --save-dev @babel/core @babel/preset-env @babel/preset-react @babel/preset-stage-2 babel-loader @babel/plugin-proposal-class-properties
+
+For css loaders use -> npm install --save-dev style-loader css-loader postcss-loader autoprefixer
+
+postcss-loader is used to transform the css to make it work with older browsers
+
+If you need to support these browsers, you need to add a polyfill (a package which provides these features for older browsers).
+
+The Babel docs explain how you can take advantage of Babel's built-in "Polyfill auto injecting" feature: https://babeljs.io/docs/en/babel-polyfill
+
+Simply install two packages:
+
+npm install --save core-js
+
+and
+
+npm install --save regenerator-runtime 
+
+Change the config of your @babel/preset-env  babel preset in the .babelrc  file: 
+
+"presets": [
+    ["@babel/preset-env", {
+        "targets": {
+            "browsers": [
+                "> 1%",
+                "last 2 versions"
+            ]
+        },
+        "useBuiltIns": "usage"
+     }],
+    ...
+ ],
+
+To load images in code and use it as url
+
+npm install --save-dev url-loader file-loader
+
+To inject scripts in html
+
+npm install --save-dev html-webpack-plugin
+
+### CSS Animations
+
+React will not wait for the css animations to complete before removing the element from DOM
+
+use react-transaction-group for css transitions
+
+import Transition from 'react-transition-group/Transition'
+
+and wrap the element that has transition
+
+'in' in Transition determines if the element should be rendered
+
+Or alternative react motion
