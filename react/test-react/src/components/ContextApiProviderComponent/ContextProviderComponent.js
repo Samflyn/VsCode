@@ -20,6 +20,16 @@ class ContextProviderComponent extends Component {
   // only wrap the contents that needs acces to context
   render() {
     return (
+      // use this for wrapping the index.js
+      // <AuthContext.Provider
+      //   value={{
+      //     authenticated: this.state.isLoggedIn,
+      //     login: this.loginHandler,
+      //   }}
+      // >
+      //   {this.props.children}
+      // </AuthContext.Provider>
+
       <div>
         <h3>Context Provider</h3>
         <AuthContext.Provider

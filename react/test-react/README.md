@@ -171,3 +171,5 @@ and wrap the element that has transition
 'in' in Transition determines if the element should be rendered
 
 Or alternative react motion
+
+### Take a look at Relay + GraphQL

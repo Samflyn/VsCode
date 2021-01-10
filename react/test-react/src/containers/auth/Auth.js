@@ -117,11 +117,12 @@ class Auth extends Component {
             />
           );
         })}
-        {this.props.error ? (
+        {/* shorter syntax */}
+        {this.props.error && (
           <p style={{ color: 'red', fontWeight: 'bold' }}>
             {this.props.error.message}
           </p>
-        ) : null}
+        )}
         <br />
         <button type="submit">
           {!this.state.isSignUp ? 'Sign In' : 'Sign Up'}

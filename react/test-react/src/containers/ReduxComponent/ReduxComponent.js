@@ -63,6 +63,20 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+// For functional components
+
+// instead of using connect we can also use useDispatch and useSelector for functional components
+// we can use this dispatch to dispatch actions instead
+// instead of props.onAddName we simply call onAddName
+// const dispatch = useDispatch();
+// const onAddName = (data) => dispatch(actions.addName(data));
+
+// useSelector will be used to manage state
+// we can use multiple states individually
+// const nameList = useSelector(state => {return state.reduce.nameList});
+
+// export default ReduxComponent;
+
 // if state is not required just pass null
 // connect returns a function which takes an hoc
 // to connect we can pass config i.e which state is required and which actions do we need to dispatch
