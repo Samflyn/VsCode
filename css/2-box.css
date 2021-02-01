@@ -1,0 +1,138 @@
+/* box sizing to calculate including padding and border */
+/* default is content-box where padding and border size is not included */
+* {
+  box-sizing: border-box;
+}
+
+/* by default body has a margin of 8px */
+body {
+  margin: 0;
+}
+
+/* margin collapsing -> when two block items have margins, only the one with the higer margin is used */
+#some-box {
+  color: white;
+  background-color: red;
+  margin: 20px;
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
+  /* border: 5px solid black; */
+  padding: 20px;
+}
+
+.main-header {
+  width: 100%;
+  background-color: #2ddf5c;
+  padding: 8px 16px;
+}
+
+.main-section {
+  width: 100%;
+  height: 60vh;
+  padding: 10px;
+  background: blue;
+}
+
+/* display is used to change element behaviour to inline, block or hidden */
+/* block takes the whole width and has margin and padding unlike inline elements */
+/* inline element takes only the content width */
+/* using inline-block the block element behaves like an inline element */
+/* using text-decoration won't work here as the browser defaults for a link's specifity is higher */
+.main-nav__item {
+  display: inline-block;
+  margin: 0 8px;
+}
+
+/* using classes is a bit faster */
+.main-nav__item a {
+  text-decoration: none;
+  color: #0e4f1f;
+  font-weight: bold;
+  /* if padding is added only on hover the text will jump up */
+  padding: 3px 0;
+}
+
+/* DBM naming specification, the state should always be seperated by -- */
+/* since this and the above have the same specifity order does matter and will replace the above one */
+.main-nav__item--cta a {
+  color: white;
+  background: purple;
+  padding: 8px 16px;
+  /* to round the corners */
+  border-radius: 8px;
+}
+
+.main-nav__items {
+  margin: 0;
+  /* setting padding to 0 also removes the bullet points */
+  padding: 0;
+  list-style: none;
+}
+
+.main-nav {
+  display: inline-block;
+  /* the inline elements will be treated as text */
+  text-align: right;
+  /* only removing the div space of 40px is not enough as the line space between the div is also considered */
+  width: calc(100% - 64px);
+  vertical-align: middle;
+}
+
+.main-header > div {
+  display: inline-block;
+}
+
+.main-header__item {
+  color: #0e4f1f;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+.circle-me {
+  background: lightblue;
+  width: 128px;
+  height: 128px;
+  border: 2px solid blue;
+  border-radius: 50%;
+  /* to center the image horizontally */
+  margin: auto;
+}
+
+.circle-me:hover {
+  background: red;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+/* psuedo classes -> style specific state of an element */
+/* :class name */
+
+/* mouse over the element */
+.main-nav__item a:hover,
+.main-nav__item a:active {
+  color: white;
+  border-bottom: 5px solid white;
+}
+
+/* while being clicked and released */
+/* .main-nav__item a:active {
+  color: red;
+} */
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active {
+  color: purple;
+  background: white;
+  border: 2px solid purple;
+  padding: 6px 14px;
+}
+
+/* psuedo element -> style specific part of an element */
+/* ::element name */
+h1::after {
+  content: ' .';
+  color: red;
+}

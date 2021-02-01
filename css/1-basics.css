@@ -1,0 +1,83 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* selectors */
+/* css is case insensitive, so always use kebab case */
+/* order does matter only if same selectors are used */
+/* inheritance -> child elements get styles from their parent, inherited styles have lower priority even below browser default */
+
+/* by element */
+h1 {
+  font-weight: bold;
+}
+
+/* by class */
+.class-select {
+  font-weight: bold;
+}
+
+/* universal */
+* {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* by id */
+#id-select {
+  font-weight: bold;
+}
+
+/* by attribute */
+[disabled] {
+  color: red;
+}
+
+/* to use the font family of the parent, even if the element has a different font applied */
+.inherit-font {
+  font-family: inherit;
+}
+
+/* combinators */
+/* combine multiple selectors */
+
+/* any h1 inside an element with id, it dosen;t have to be a direct child */
+#some-id-element h1 {
+  color: red;
+}
+
+/* adjacent sibling + */
+/* should also share the same parent */
+/* p which is only direct sibling to div */
+div + p {
+  color: blue;
+}
+
+/* general sibling ~ */
+/* same parent but can be on the same level */
+div ~ p {
+  color: blue;
+}
+
+/* child > */
+/* only direct child of the div */
+div > p {
+  color: blue;
+}
+
+/* descedent */
+/* all p inside a div, not a direct child */
+div p {
+  color: blue;
+}
+
+/* combined selector */
+/* an anchor tag with class or id */
+a.some-class,
+a#some-id {
+  color: blue;
+}
+
+/* overrides a property */
+.some-class {
+  color: red !important;
+}

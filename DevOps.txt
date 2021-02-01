@@ -1,0 +1,13 @@
+Source Control (like Git, Bitbucket, Svn, VSTS etc)
+
+Continuous Integration (like Jenkins, Bamboo, VSTS )
+
+Infrastructure Automation (like Puppet, Chef, Ansible)
+
+Deployment Automation & Orchestration (like Jenkins, VSTS, Octopus Deploy)
+
+Container Concepts (LXD, Docker)
+
+Orchestration (Kubernetes, Mesos, Swarm)
+
+Cloud (like AWS, Azure, GoogleCloud, Openstack)
