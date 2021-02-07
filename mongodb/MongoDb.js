@@ -190,7 +190,7 @@ db.comments.find({ $and: [{ rating: { $gt: 9 } }, { generes: 'Drama' }] });
 
 db.comments.find({ rating: { $gt: 9 }, generes: 'Drama' });
 
-// in json the key cannot be specified more than once, if it is specified it will be replaced so $ant is used for this
+// in json the key cannot be specified more than once, if it is specified it will be replaced so $and is used for this
 
 db.comments.find({ runtime: { $not: { $eq: 60 } } });
 
@@ -216,7 +216,7 @@ db.users.find({ description: { $regex: /something/ } });
 
 db.users.find({ $expr: { $gt: ['$volume', '$target'] } });
 
-// check if volume if gt 190, then sub 30 else nothing and check if the value is gt target
+// check if volume is gt 190, then sub 30 else nothing and check if the value is gt target
 
 db.users.find({
   $expr: {

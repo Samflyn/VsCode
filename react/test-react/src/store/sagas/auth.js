@@ -4,7 +4,7 @@ import { delay, put } from 'redux-saga/effects';
 // they don't change the store
 // function* is a generator, it can be executed incrementally
 // they don't run from start to end immediatly but can be paused during async code to finish
-// if sync code is ued they will finish to end
+// if sync code is used they will finish to end
 
 // yield will wait for the line to execute before continuing
 // put is used to dispatch actions to store

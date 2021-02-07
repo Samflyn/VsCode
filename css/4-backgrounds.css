@@ -1,0 +1,11 @@
+#for-background {
+  background: red;
+  /* background-image: url(""); */
+  width: 100%;
+  /* this sets the image to fit in the container but crops it */
+  background-size: 100%;
+  /* this will ensure that the image will fit the container based on landscape or portrait */
+  /* it will also zoom in or out based on the size */
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+}

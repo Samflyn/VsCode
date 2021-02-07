@@ -107,6 +107,28 @@ body {
   cursor: pointer;
 }
 
+/* floating part */
+.for-floating {
+  color: black;
+  border: 2px solid black;
+  padding: 8px;
+  margin: 8px;
+}
+
+.for-floating p {
+  color: inherit;
+}
+
+#floating-box {
+  margin: 8px;
+  padding: 32px;
+  border: 2px solid black;
+  display: inline-block;
+  float: left;
+  /* clear: both; */
+  /* elements will ignore the previous float values */
+}
+
 /* psuedo classes -> style specific state of an element */
 /* :class name */
 

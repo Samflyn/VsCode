@@ -1,0 +1,64 @@
+.positions {
+  background: lightgrey;
+  margin: 16px 0;
+  padding: 16px;
+  border: 8px solid black;
+  /* it hides the elements which go out of this div */
+  /* by default */
+  /* if it is set to the body it will simply passed on to html */
+  /* we need to set it to both html and body */
+  overflow: hidden;
+}
+
+.positions div {
+  margin: 32px;
+  padding: 16px;
+  border: 4px solid black;
+}
+
+#one-pos {
+  /* default is static */
+  /* setting fixed removes it from the dom and sticks it to the vieport */
+  /* it also sets it as an inline-block element */
+  /* using fixed also sets the elements with it's own stacking context */
+  position: fixed;
+  bottom: 0px;
+  margin: 0px;
+  left: 0px;
+  /* it is default for all elements in DOM */
+  /* setting z-index to an element with position dose'nt affect it */
+  /* if z-index is same for two elements the oreder is considered, the first wins */
+  z-index: auto;
+}
+
+#three-pos {
+  /* relative does not take the element out of the DOM flow */
+  position: relative;
+}
+
+#badge {
+  /* if its parent has no position then html is position context */
+  /* if a parent has a position then closest element that has the position is the positioning context */
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 4px;
+  padding: 4px;
+  font-size: 16px;
+  border: none;
+  background: red;
+  border-radius: 16px;
+  font-weight: bold;
+}
+
+#two-pos {
+  position: relative;
+  top: 170px;
+  left: 0px;
+}
+
+#for-sticky {
+  /* it is a hybrid of relative and fixed */
+  position: sticky;
+  top: 20px;
+}
