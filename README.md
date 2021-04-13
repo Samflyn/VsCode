@@ -1,1 +1,1 @@
-# VsCode
+# Everything Else

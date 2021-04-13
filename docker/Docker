@@ -1,0 +1,80 @@
+# after installation add usser to docker group, so that there's no need to use root for every command
+# sudo usermod -aG docker sam
+
+# install docker, docker-machine & docker-compose
+
+# if there's an error connecting to socket either add the user to group or run as sudo
+
+# to show configs
+# docker info
+
+# new syntax
+# docker <command> <sub-command>
+# docker container run
+
+# old syntax
+# docker <command>
+# docker run
+
+# to run a new container
+# docker container run --publish 80:80 nginx
+
+# the publish command exposes the host port 80 to port 80 of the container
+
+# to run it in background
+# docker container run --publish 80:80 --detach nginx
+
+# to get the list of all running container
+# docker container ls
+
+# to get all the containers
+# all containers by default will get an unique id and name
+# docker container ls -a
+
+# to set a name to container
+# docker container run --publish 80:80 --detach --name <name> nginx
+
+# to get the logs of the container running in background
+# docker container logs <name>
+
+# to check process running in container
+# docker container top <name>
+
+# to remove a container
+# docker container rm <id> <id>
+
+# docker container run
+# it checks for the image in cache
+# then it looks at hub.docker.com and downloads it
+# creates a new container based on that image
+# gives it a virtual ip inside docker engine
+# opens host port and forwards to container port
+
+# container is just processes running in host
+# in windows and mac it will run on vm
+
+# details of conatiner
+# docker container inspect <id> or <name>
+
+# performance stats for all container
+# docker conainter stats
+
+# to set environmental value to a container
+# docker container run nginx <variable>=<value>
+
+# to get a shell inside container
+# docker container run -it nginx
+# i -> keep the session open
+# t -> tty
+
+# every time docker container run is used, it will spin up a new container based on that image
+# the changes made in the previous container will not be copied
+
+# to use the old container
+# docker container start -ai <id> or <name>
+# a -> attach STDIN/STDOUT
+
+# to run a shell inside the container that is already running in background
+# to run additional processes
+# docker container exec -it <id> or <name> bash
+

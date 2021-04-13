@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 
-// import Aux from '../../hoc/Aux';
+// import Aux from '../../hoc/Aux1';
 
 const useEffectComponent = (props) => {
   // useEffect will not run first
